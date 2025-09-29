@@ -7,14 +7,15 @@
 
 **1. Información General**
 
-•	Nombre estudiantes:
-  - Pirela Mendoza Diankarlys de los Angeles
-  - Sánchez Franco Gabriel Eduardo
-  - Trigos Trigos Yasmin Adriana
-  - Velandia Mendoza David Andrés
-•	Curso / Grupo:
-•	Fecha de entrega:
-•	Profesor:
+  -	**Nombre estudiantes:**  
+    - Pirela Mendoza Diankarlys de los Angeles  
+    - Sánchez Franco Gabriel Eduardo  
+    - Trigos Trigos Yasmin Adriana  
+    - Velandia Mendoza David Andrés  
+  - **Curso / Grupo:**  
+    - Fundamentos de Programación A 
+  - Fecha de entrega:
+  - Profesor:
 2. Título del Proyecto
 Un título claro y conciso que refleje la naturaleza del proyecto.
 **3.** Descripción del Proyecto
