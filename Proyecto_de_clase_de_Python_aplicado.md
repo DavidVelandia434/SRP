@@ -14,15 +14,16 @@
     - Velandia Mendoza David Andrés  
   - **Curso / Grupo:**  
     - Fundamentos de Programación A 
-  - Fecha de entrega:
-  - Profesor:
-2. Título del Proyecto
-Un título claro y conciso que refleje la naturaleza del proyecto.
-**3.** Descripción del Proyecto
-Breve resumen del proyecto, incluyendo:
-•	Propósito o problema que resuelve
-•	Público objetivo o aplicación práctica
-•	Resultado esperado
+  - **Fecha de entrega:**
+  - **Profesor:**
+    - Pablo Enrique Carreño Hernández
+
+**2. Sistema de recomendación de películas (SRP)**  
+**3. Descripción del Proyecto**  
+Breve resumen del proyecto, incluyendo:  
+  - Propósito o problema que resuelve  
+  - Público objetivo o aplicación práctica  
+  - Resultado esperado  
 
 **4. Objetivos**
 General:
