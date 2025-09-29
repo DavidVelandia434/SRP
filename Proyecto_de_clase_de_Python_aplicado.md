@@ -1,6 +1,6 @@
-···Proyecto de clase de **Python aplicado.**···
+#Proyecto de clase de **Python aplicado.**
 
-Fundamentos de Programación
+##Fundamentos de Programación
 
 
 **Sistema de Recomendación de Películas _(SRP)_**
