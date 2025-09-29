@@ -1,91 +1,72 @@
-import json
+import pandas as pd
 
-def load_movies(file_path="peliculas.jsonl"):
-    movies = []
+#Carga el dataset de metadatos de películas desde el archivo 'movies_metadata.csv'.
+metadata = pd.read_csv("movies_metadata.csv", low_memory=False)
 
-    #Se abre el JSONl con los datos de todas las peliculas disponibles que tiene, guarda los datos en bytes en un buffer de 10 mb
-    with open(file_path, "rb", buffering=10*1024*1024) as file:
-        #se hace un bucle para acceder a cada linea del JSONl
-        for line in file:
-            #se codifica el byte en utf-8 para que se convierta en un string, y luego se almacena en una variable line
-            #convirtiendo el string a un diccionario JSONl
-            
-            #luego se usa el retorno yield para enviar una pelicula a la vez
-            line = line.decode("utf-8")
-            yield json.loads(line)
-            
-
-#Filtro de peliculas por genero, recibe un parametro de tipo lista en el que se almacenaran strings con los distintos tipos de categorias
-def movies_by_genre(favorite_genres):
-    #convertimos la lista en un set para manejar de forma mas eficiente las comparaciones
-    favorite_genres_set = set(favorite_genres)
-
-    #guardamos la funcion generadora en una variable para su uso posterior
-    load_movies_gen = load_movies()
-
-    #Lista para guardar todas las peliculas que cumplan
-    recommended_movies = []
-
-    #Validación del parametro para verificar que se pase una lista como parametro
-    if not isinstance(favorite_genres, list):
-        raise TypeError("Both movies and favorite_genres must be lists")
-    
-    #Se itera en la funcion generadora para obtener cada pelicula
-    for movie in load_movies_gen:
-        #Se obtiene el valor del diccionario en la clave genres
-        genres = movie.get("genres")
-        #Si no la encuentra, pasa por alto esa categoria
-        if not genres:
-            continue
-
-        #Si encuentra el valor, por ejemplo ("Animation,Comedy,Romance") separa cada palabra por comas
-        movie_genres = set(genres.split(","))
-
-        #si este set tiene intersecciones con categorias de favorite_genres_set, es añadido a la lista de pelciulas recomendadas
-        if movie_genres & favorite_genres_set:  
-            recommended_movies.append(movie)
+metadata = metadata.drop([19730, 29503, 35587], errors='ignore')
 
 
-    #Se retorna peliculas recomendadas
-    return recommended_movies
+def load_and_merge_credits_keywords():
+    global metadata
+    #llamar a los archivos con los creditos y palabras claves
+    credits = pd.read_csv("credits.csv")
+    keywords = pd.read_csv("keywords.csv")
 
-#Funcion para filtrar por formato, recibe un argumento, el formato como un string
-def movies_by_format(format):
+    #nos aseguramos que el parametro de id de cada archivo tenga el tipo int
+    keywords['id'] = keywords['id'].astype('int')
+    credits['id'] = credits['id'].astype('int')
+    metadata['id'] = metadata['id'].astype('int')
+
+    #juntamos los datos de los archivos.csv y keywords.csv con datos
+    metadata = metadata.merge(credits, on='id')
+    metadata = metadata.merge(keywords, on='id')
 
 
-    #Lista para guardar las peliculas filtradas por formato
-    movies_by_format_lst = []
+def estimate_votation():
+    #Calcula dos valores estadísticos clave a partir de los siguientes datos:
 
-    load_movies_gen = load_movies()
+    #El promedio global de claificaciones y el umbral minimo de votos necesario para considerar una pelicula para calificarla
 
-    #verificación que el argumento pasado tengan el tipo de dato corresopndiente
-    if not isinstance(format, str):
-        raise TypeError("El objeto pasado")
-    
-    #se itera en la lista de peliculas hasta que una tenga el mismo formato, si sí, se guarda en la lista
-    for movie in load_movies_gen:
-        if movie["titleType"] == format:
-            movies_by_format_lst.append(movie)
-    
-    #se retorna la lista
-    return movies_by_format_lst
+    avg_rating = metadata['vote_average'].mean()
+    minimum_votes = metadata['vote_count'].quantile(0.90)
 
-def movies_by_age(is_adult, movies):
-    movies_by_age_lst = []
+    #retorna una tupla con el promedio y el minimo de votos para calificar
+    return (avg_rating, minimum_votes)
 
-    for movie in movies:
-        if is_adult == int(movie.get("isAdult")):
-            movies_by_age_lst.append(movie)
-    
-    return movies_by_age_lst
 
-values = movies_by_genre(["Animation", "Comedy", "Romance"])
-first_movies = []
-for i in range(100):
-    first_movies.append(values[i])
+def weighted_rating(x, m=estimate_votation()[1], c=estimate_votation()[0]):
+    #calcular la puntuacion ponderada de una pelicula
 
-by_age = movies_by_age(0, first_movies)
-print("Peliculas para menores de edad")
+    # v numero de votos
+    # r promedio de votos
+    # m numero minimo de votos
+    #c promedio global de votos
+    v = x['vote_count']
+    r = x['vote_average']
 
-for i in by_age:
-    print(i)
+    #retorna la puntuacion ponderada con la aplicación
+    #la primera parte de la ecuacion mide un peso en base a los votos de 0 a 1 * r(promeio de votos)
+
+    #la segunda parte de la ecuación suaviza la ecuacion al promedio global
+    return (v/(v+m) * r + (m/(m+v) * c))
+
+def get_qualified_movies_by_rating():
+    # Filtrar las películas que cumplen el criterio de votos mínimos
+    #loc filtra filas segun una condición booleana
+    qualifited_movies = metadata.copy().loc[metadata["vote_count"] >= estimate_votation()[1]]
+
+    # Calcular la puntuación ponderada para cada película
+    #crear una nueva columna llamada score
+    #apply() aplica la función weighted_rating fila por fila
+    #axis=1 significa que recorremos las filas
+    qualifited_movies["score"] = qualifited_movies.apply(weighted_rating, axis=1)
+
+    # Ordenar las películas por la puntuación calculada de mayor a menor
+    qualifited_movies = qualifited_movies.sort_values("score", ascending=False)
+
+    return qualifited_movies
+
+
+load_and_merge_credits_keywords()
+
+print(metadata.head(1))
