@@ -35,8 +35,8 @@ Breve resumen del proyecto, incluyendo:
 - Clasificar las películas por género y calificación.
 - Mostrar un menú de entrada con las opciones de géneros. 
 ### **5. Requisitos**  
-•	Herramientas y tecnologías utilizadas (Python, librerías, etc.)
-•	Requisitos de instalación o ejecución
+- Herramientas y tecnologías utilizadas (Python, librerías, etc.)
+- Requisitos de instalación o ejecución
 ### **6. Diseño del Proyecto**  
 •	Arquitectura o estructura del programa: (modularización, funciones, clases, etc.)
 •	Diagrama de flujo 
