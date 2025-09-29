@@ -21,7 +21,7 @@ Breve resumen del proyecto, incluyendo:
 •	Propósito o problema que resuelve
 •	Público objetivo o aplicación práctica
 •	Resultado esperado
-4. Objetivos
+**4. Objetivos**
 General:
 •	Describir el propósito principal del proyecto.
 Específicos:
