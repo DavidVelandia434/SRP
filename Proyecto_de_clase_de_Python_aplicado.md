@@ -20,10 +20,7 @@
 ### **2. Sistema de recomendación de películas (SRP)**  
 ### **3. Descripción del Proyecto**  
 Breve resumen del proyecto, incluyendo:  
-  - Propósito o problema que resuelve  
-  - Público objetivo o aplicación práctica  
-  - Resultado esperado
-    -  Realizamos un programa en Python con la capacidad de analizar la cantidad de visualizaciones y las calificaciones de las películas (obteniendo los datos de la página web IMDb), para recomendar al usuario según la elección de su preferencia, clasificándolas por géneros.
+-  Realizamos un programa en Python con la capacidad de analizar la cantidad de visualizaciones y las calificaciones de las películas (obteniendo los datos de la página web IMDb), para recomendar al usuario según la elección de su preferencia, clasificándolas por géneros.
 
 ### **4. Objetivos**  
 **General:**  
