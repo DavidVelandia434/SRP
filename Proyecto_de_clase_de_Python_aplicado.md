@@ -16,7 +16,7 @@ Fundamentos de Programación
 •	Profesor:
 2. Título del Proyecto
 Un título claro y conciso que refleje la naturaleza del proyecto.
-3. Descripción del Proyecto
+**3.** Descripción del Proyecto
 Breve resumen del proyecto, incluyendo:
 •	Propósito o problema que resuelve
 •	Público objetivo o aplicación práctica
