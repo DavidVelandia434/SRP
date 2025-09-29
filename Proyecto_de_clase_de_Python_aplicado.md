@@ -27,7 +27,7 @@ Breve resumen del proyecto, incluyendo:
 
 ### **4. Objetivos**  
 **General:**  
-- Crear un programa que analice las visualizaciones y calificaciones de peliculas, para recomendar al usuario segun la eleccion del genero de su agrado.
+- Crear un programa que analice las visualizaciones y calificaciones de películas, para recomendar al usuario según la elección del género de su agrado.
 
 **Específicos:**  
 - Enumerar los objetivos técnicos o de aprendizaje específicos (ej. usar estructuras de datos, aplicar funciones, temas vistos en clase, etc.).
