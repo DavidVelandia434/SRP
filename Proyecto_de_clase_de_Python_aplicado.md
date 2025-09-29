@@ -7,10 +7,10 @@ Fundamentos de Programación
 1. Información General
 
 •	Nombre estudiantes:
-- Pirela Mendoza Diankarlys de los Angeles
-- Sánchez Franco Gabriel Eduardo
-- Trigos Trigos Yasmin Adriana
-- Velandia Mendoza David Andrés
+  - Pirela Mendoza Diankarlys de los Angeles
+  - Sánchez Franco Gabriel Eduardo
+  - Trigos Trigos Yasmin Adriana
+  - Velandia Mendoza David Andrés
 •	Curso / Grupo:
 •	Fecha de entrega:
 •	Profesor:
