@@ -38,9 +38,9 @@ Breve resumen del proyecto, incluyendo:
 - Herramientas y tecnologías utilizadas (Python, librerías, etc.)
 - Requisitos de instalación o ejecución
 ### **6. Diseño del Proyecto**  
-•	Arquitectura o estructura del programa: (modularización, funciones, clases, etc.)
-•	Diagrama de flujo 
-•	Interfaz (si aplica): descripción o imagen de la interfaz gráfica o consola
+- Arquitectura o estructura del programa: (modularización, funciones, clases, etc.)
+- Diagrama de flujo
+- Interfaz (si aplica): descripción o imagen de la interfaz gráfica o consola
 ### **7. Desarrollo**  
 •	Explicación paso a paso de cómo se desarrolló el proyecto
 •	Fragmentos de código relevantes comentados
