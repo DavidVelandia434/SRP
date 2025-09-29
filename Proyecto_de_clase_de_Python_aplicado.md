@@ -4,7 +4,8 @@ Fundamentos de Programación
 
 
 **Sistema de Recomendación de Películas _(SRP)_**
-1. Información General
+
+**1. Información General**
 
 •	Nombre estudiantes:
   - Pirela Mendoza Diankarlys de los Angeles
