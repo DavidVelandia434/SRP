@@ -1,7 +1,9 @@
-Proyecto de clase de Python aplicado.
+Proyecto de clase de **Python aplicado.**
+
 Fundamentos de Programación
-*h*
-Nombre del Proyecto
+
+
+**Sistema de Recomendación de Películas _(SRP)_**
 1. Información General
 •	Nombre estudiantes:
 - Pirela Mendoza Diankarlys de los Angeles
