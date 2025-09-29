@@ -31,6 +31,12 @@ Breve resumen del proyecto, incluyendo:
 
 **Específicos:**  
 - Enumerar los objetivos técnicos o de aprendizaje específicos (ej. usar estructuras de datos, aplicar funciones, temas vistos en clase, etc.).
+- Implementar listas para estructurar catálogo de géneros.
+- Definir funciones para procesos específicos en el programa para una mejor gestión.
+- Vincular el programa con la página IMDb para obtener los datos.
+- Crear un programa en Python que muestre el catálogo de películas.
+- Clasificar las películas por género y calificación.
+- Mostrar un menú de entrada con las opciones de géneros. 
 ### **5. Requisitos**  
 •	Herramientas y tecnologías utilizadas (Python, librerías, etc.)
 •	Requisitos de instalación o ejecución
