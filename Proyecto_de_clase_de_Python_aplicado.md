@@ -27,9 +27,10 @@ Breve resumen del proyecto, incluyendo:
 
 ### **4. Objetivos**  
 **General:**  
-•	Describir el propósito principal del proyecto.  
+- Describir el propósito principal del proyecto.
+
 **Específicos:**  
-•	Enumerar los objetivos técnicos o de aprendizaje específicos (ej. usar estructuras de datos, aplicar funciones, temas vistos en clase, etc.).
+- Enumerar los objetivos técnicos o de aprendizaje específicos (ej. usar estructuras de datos, aplicar funciones, temas vistos en clase, etc.).
 ### **5. Requisitos**  
 •	Herramientas y tecnologías utilizadas (Python, librerías, etc.)
 •	Requisitos de instalación o ejecución
