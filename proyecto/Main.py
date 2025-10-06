@@ -5,7 +5,7 @@ generos=DataBase.get_all_genres()
 generos_seleccionados = []
 peliculas_filtradas_por_genero = []
 
-print("----MENU GENERO-----")
+print("----MENU GENERO----")
 for i in range(len(generos)):
     print(f"{i+1}.{generos[i]}")
            
@@ -33,6 +33,7 @@ peliculas_filtradas_por_genero = DataBase.filter_by_genres(generos_seleccionados
 for pelicula in peliculas_filtradas_por_genero:
    
     print(pelicula[20])
+
 
 
 
