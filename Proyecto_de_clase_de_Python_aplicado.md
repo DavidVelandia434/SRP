@@ -18,25 +18,27 @@
     - Pablo Enrique Carreño Hernández
 
 ### **2. Sistema de recomendación de películas (SRP)**  
-### **3. Descripción del Proyecto**  
-Breve resumen del proyecto, incluyendo:  
--  Realizamos un programa en Python con la capacidad de analizar la cantidad de visualizaciones y las calificaciones de las películas (obteniendo los datos de la página web IMDb), para recomendar al usuario según la elección de su preferencia, clasificándolas por géneros.
+### **3. Descripción del Proyecto**   
+-  Realizamos un programa en Python con la capacidad de analizar la cantidad de visualizaciones y las calificaciones de las películas (obteniendo los datos de la página web IMDb), para recomendar al usuario según la elección de su preferencia, clasificándolas por géneros y popularidad.
 
 ### **4. Objetivos**  
 **General:**  
 - Crear un programa que analice las visualizaciones y calificaciones de películas, para recomendar al usuario según la elección del género de su agrado.
 
 **Específicos:**  
-- Enumerar los objetivos técnicos o de aprendizaje específicos (ej. usar estructuras de datos, aplicar funciones, temas vistos en clase, etc.).
-- Implementar listas para estructurar catálogo de géneros.
-- Definir funciones para procesos específicos en el programa para una mejor gestión.
-- Vincular el programa con la página IMDb para obtener los datos.
 - Crear un programa en Python que muestre el catálogo de películas.
-- Clasificar las películas por género y calificación.
-- Mostrar un menú de entrada con las opciones de géneros. 
+- Vincular el programa con la página *kaggle* para obtener los datos.
+- Definir funciones para procesos específicos en el programa para una mejor gestión.
+- Mostrar un menú de entrada con las opciones de géneros.
+- Implementar listas para estructurar catálogo de géneros.
+- Filtrar y mostrar las películas por género y calificación.
 ### **5. Requisitos**  
 - Herramientas y tecnologías utilizadas (Python, librerías, etc.)
+  - Python
+  - Librería *pandas*
+  - Librería *AST*
 - Requisitos de instalación o ejecución
+  - 
 ### **6. Diseño del Proyecto**  
 - Arquitectura o estructura del programa: (modularización, funciones, clases, etc.)
 - Diagrama de flujo
