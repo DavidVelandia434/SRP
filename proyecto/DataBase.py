@@ -91,7 +91,7 @@ def filter_by_genres(genre):
         g_dict = ast.literal_eval(row.genres)
         for d in g_dict:
             #el codigo es el mismo que al buscar la lista completa, pero en la condición buscamos si el genero del diccionario esta en el genero
-            if d["name"] in genre:
+            if d["name"] in genre and not d["name"] in filtered_movies::
                 filtered_movies.append(row)
 
     return filtered_movies
@@ -104,3 +104,4 @@ q_movies = get_qualified_movies_by_rating()
 #print(metadata.columns.tolist())
 
 print(filter_by_genres(get_all_genres()))
+
