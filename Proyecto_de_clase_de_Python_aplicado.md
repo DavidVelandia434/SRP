@@ -38,20 +38,21 @@
   - Librería *pandas* para el manejo y análisis de datos.
   - Librería *ast* para que Python procese datos de texto abstractos.
   - Librería *tkinker* para añadir interfaz gráfica
-  - Librería *matplotlib* para crear diagramas gráficos
+  - Librería *pillow*
+  - ~~Librería *matplotlib* para crear diagramas gráficos~~
 - Requisitos de instalación o ejecución
   - Instalar Python 3
   - Instalar librerías
     - *.pip install pandas*
     - *.pip install ast*
     - *.pip install tkinker*
-    - *.pip install matplotlib*
+    - *.pip install pillow*
+    - ~~*.pip install matplotlib*~~
 ### **6. Diseño del Proyecto**  
 - Arquitectura o estructura del programa: (modularización, funciones, clases, etc.)
   - Menú
-  - 
 - Diagrama de flujo
-- Interfaz (si aplica): descripción o imagen de la interfaz gráfica o consola
+- Interfaz: descripción o imagen de la interfaz gráfica o consola
 ### **7. Desarrollo**  
 •	Explicación paso a paso de cómo se desarrolló el proyecto
 •	Fragmentos de código relevantes comentados
@@ -67,3 +68,4 @@
 •	Posibles mejoras o ideas futuras
 ### **10. Bibliografía / Recursos**  
 •	Sitios web, documentación, libros o videos utilizados, mínimo 10
+- 
