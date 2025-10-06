@@ -27,7 +27,7 @@
 
 **Específicos:**  
 - Crear un programa en Python que muestre el catálogo de películas.
-- Vincular el programa con la página *kaggle* para obtener los datos.
+- Vincular los archivos.csv tales como "credits.csv", "keywords.csv" y "movies_metadata.csv) de la pagina *kaggle* para obtener los datos.
 - Definir funciones para procesos específicos en el programa para una mejor gestión.
 - Mostrar un menú de entrada con las opciones de géneros.
 - Implementar listas para estructurar catálogo de géneros.
