@@ -30,9 +30,12 @@ while(True):
         print("invalido, intente de nuevo")    
 
 peliculas_filtradas_por_genero = DataBase.filter_by_genres(generos_seleccionados)
-for pelicula in peliculas_filtradas_por_genero:
-   
-    print(pelicula[20])
+if len(peliculas_filtradas_por_genero) > 0:
+    print("\nPelículas filtradas por género(s):")
+    for pelicula in peliculas_filtradas_por_genero:
+        print(pelicula.title)
+else:
+    print("No se encontraron películas para los géneros seleccionados.")
 
 
 
