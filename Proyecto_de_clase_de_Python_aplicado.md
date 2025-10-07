@@ -42,7 +42,7 @@
   - Librería *pillow*
   - ~~Librería *matplotlib* para crear diagramas gráficos~~
 - Requisitos de instalación o ejecución
-  - Instalar Python 3
+  - Instalar Python 3 o superior
   - Instalar librerías
     - *.pip install pandas*
     - *.pip install ast*
