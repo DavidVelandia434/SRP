@@ -19,7 +19,7 @@
 
 ### **2. Sistema de recomendación de películas (SRP)**  
 ### **3. Descripción del Proyecto**   
--  Realizamos un programa con interfaz grafica en Python con la capacidad de analizar la cantidad de visualizaciones y las calificaciones de las películas (obteniendo los datos de la página web IMDb), para recomendar al usuario según la elección de su preferencia, clasificándolas por géneros, ranking y popularidad.
+-  Realizamos un programa con interfaz grafica en Python con la capacidad de analizar la cantidad de visualizaciones y las calificaciones de las películas (obteniendo los datos de la página web IMDb), para recomendar al usuario según la elección de su preferencia, clasificándolas por géneros, ranking y popularidad; ademas de que el usuario podra seleccionar la pelicula que le interese y ver más detalles de ella como, poster, sinopsis y duración.
 
 ### **4. Objetivos**  
 **General:**  
