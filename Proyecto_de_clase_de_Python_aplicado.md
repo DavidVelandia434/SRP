@@ -55,18 +55,18 @@
 - Diagrama de flujo
 - Interfaz: descripción o imagen de la interfaz gráfica
 ### **7. Desarrollo**  
-•	Explicación paso a paso de cómo se desarrolló el proyecto
-•	Fragmentos de código relevantes comentados
-•	Descripción de las funciones principales
+- Explicación paso a paso de cómo se desarrolló el proyecto
+- Fragmentos de código relevantes comentados
+- Descripción de las funciones principales
 ### **8. Pruebas y Resultados**  
-•	Cómo se probó el programa
-•	Capturas de pantalla o ejemplos de ejecución
-•	Resultados obtenidos
-•	Manual de usuario
+- Cómo se probó el programa
+-	Capturas de pantalla o ejemplos de ejecución
+-	Resultados obtenidos
+-	Manual de usuario
 ### **9. Conclusiones**  
-•	Lecciones aprendidas
-•	Dificultades encontradas y cómo se resolvieron
-•	Posibles mejoras o ideas futuras
+-	Lecciones aprendidas
+-	Dificultades encontradas y cómo se resolvieron
+-	Posibles mejoras o ideas futuras
 ### **10. Bibliografía / Recursos**  
-•	Sitios web, documentación, libros o videos utilizados, mínimo 10
+-	Sitios web, documentación, libros o videos utilizados, mínimo 10
 - 
