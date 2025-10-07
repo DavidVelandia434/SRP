@@ -53,7 +53,7 @@
 - Arquitectura o estructura del programa: (modularización, funciones, clases, etc.)
   - Menú
 - Diagrama de flujo
-- Interfaz: descripción o imagen de la interfaz gráfica o consola
+- Interfaz: descripción o imagen de la interfaz gráfica
 ### **7. Desarrollo**  
 •	Explicación paso a paso de cómo se desarrolló el proyecto
 •	Fragmentos de código relevantes comentados
