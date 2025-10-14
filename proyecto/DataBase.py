@@ -34,37 +34,26 @@ def estimate_votation():
     return (avg_rating, minimum_votes)
 
 
-def weighted_rating(x, m=estimate_votation()[1], c=estimate_votation()[0]):
-    #calcular la puntuacion ponderada de una pelicula
+def get_qualified_movies_by_rate(movies_list):
+    vote_min = estimate_votation()[1]
+    avg_rating = estimate_votation()[0]
 
-    # v numero de votos
-    # r promedio de votos
-    # m numero minimo de votos
-    #c promedio global de votos
-    v = x['vote_count']
-    r = x['vote_average']
+    # Convertir namedtuples a diccionarios para poder añadir score
+    movies_dicts = [m._asdict() for m in movies_list]
 
-    #retorna la puntuacion ponderada con la aplicación
-    #la primera parte de la ecuacion mide un peso en base a los votos de 0 a 1 * r(promeio de votos)
+    # Filtrar por votos mínimos
+    qualified = [m for m in movies_dicts if m["vote_count"] >= vote_min]
 
-    #la segunda parte de la ecuación suaviza la ecuacion al promedio global
-    return (v/(v+m) * r + (m/(m+v) * c))
+    # Calcular score
+    for m in qualified:
+        m["score"] = (m["vote_count"] / (m["vote_count"] + vote_min) * m["vote_average"] +
+                      (vote_min / (vote_min + m["vote_count"]) * avg_rating))
 
-def get_qualified_movies_by_rating():
-    # Filtrar las películas que cumplen el criterio de votos mínimos
-    #loc filtra filas segun una condición booleana
-    qualifited_movies = metadata.copy().loc[metadata["vote_count"] >= estimate_votation()[1]]
+    # Ordenar por score descendente
+    qualified.sort(key=lambda m: m["score"], reverse=True)
 
-    # Calcular la puntuación ponderada para cada película
-    #crear una nueva columna llamada score
-    #apply() aplica la función weighted_rating fila por fila
-    #axis=1 significa que recorremos las filas
-    qualifited_movies["score"] = qualifited_movies.apply(weighted_rating, axis=1)
+    return qualified
 
-    # Ordenar las películas por la puntuación calculada de mayor a menor
-    qualifited_movies = qualifited_movies.sort_values("score", ascending=False)
-
-    return qualifited_movies
 
 #obtener todos los generos disponibles
 def get_all_genres():
@@ -91,7 +80,7 @@ def filter_by_genres(genre):
         g_dict = ast.literal_eval(row.genres)
         for d in g_dict:
             #el codigo es el mismo que al buscar la lista completa, pero en la condición buscamos si el genero del diccionario esta en el genero
-            if d["name"] in genre and not d["name"] in filtered_movies::
+            if d["name"] in genre and not d["name"] in filtered_movies:
                 filtered_movies.append(row)
 
     return filtered_movies
@@ -99,9 +88,7 @@ def filter_by_genres(genre):
 
 load_and_merge_credits_keywords()
 
-q_movies = get_qualified_movies_by_rating()
+#q_movies = get_qualified_movies_by_rate(filter_by_genres(["Animation"]))
 
-#print(metadata.columns.tolist())
-
-print(filter_by_genres(get_all_genres()))
-
+#for movie in q_movies:
+#   print(movie["vote_average"])
