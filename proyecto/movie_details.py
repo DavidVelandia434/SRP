@@ -22,6 +22,7 @@ def get_movie_details_by_id(movie_id: int) -> dict:
 
     # Buscar la película por ID en DataBase
     row = metadata[metadata['id'] == movie_id]
+    #Empty por si se tiene ausencia de dato
     if row.empty:
         return {"error": "Película no encontrada"}
     return _extract_details(row.iloc[0])
@@ -109,5 +110,6 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
 
