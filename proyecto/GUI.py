@@ -1,144 +1,101 @@
-import tkinter as tk # Importar tkinter para el GUI
-from tkinter import ttk # Importar el treeview y widgets avanzados
-import DataBase # Importar el módulo database.py
-import ast # Importar la libreria ast para convertir strings a estructuras
+import tkinter as tk
+from tkinter import ttk
+import DataBase
+from movie_details import get_movie_details_by_id
+import webbrowser
 
-#----------------------------
-# Variables
-#----------------------------
+# ---------------------------- Configuración ventana ----------------------------
+root = tk.Tk()
+root.geometry("1000x700")
+root.title("Sistema de Recomendación de Películas")
 
-root = tk.Tk()  # Ventana principal
-table_frame = tk.Frame(root) # Contenedor para la tabla de resultados
-movies = [] # Lista global para almacenar las peliculas filtradas
+# ---------------------------- Variables globales ----------------------------
+table_frame = tk.Frame(root)
+details_frame = tk.Frame(root, bg="#f0f0f0", padx=10, pady=10)
 
-# ---------------------------
-# Funciones
-# ---------------------------
+# Widgets detalles
+title_label_widget = tk.Label(details_frame, text="", font=("Arial", 16, "bold"), bg="#f0f0f0")
+director_label = tk.Label(details_frame, text="", bg="#f0f0f0")
+runtime_label = tk.Label(details_frame, text="", bg="#f0f0f0")
+genres_label = tk.Label(details_frame, text="", bg="#f0f0f0")
+rating_label = tk.Label(details_frame, text="", bg="#f0f0f0")
+overview_label = tk.Label(details_frame, text="", wraplength=500, justify="left", bg="#f0f0f0")
+poster_link = tk.Label(details_frame, text="", fg="blue", cursor="hand2", bg="#f0f0f0")
 
-def create_window():
-    root.geometry("1280x720") # Tamaño de la ventana
-    root.title("SRP") # Titulo de la ventana
-
-
-def show_selection(event = None):
-    selection_indexes = list_genres_listbox.curselection() # Obtener indices seleccionados en Listbox
-
-    selected_genres = [list_genres_listbox.get(i) for i in selection_indexes] # Mostrar los géneros elegidos en la etiqueta
-
-    results_label.config(text="Chosen genres: " + ", ".join(selected_genres))
-    # Mostrar los generos elegidos en la etiqueta
-
-    if not selection_indexes:
-        # Ocultar botón y etiqueta si no hay selección
-        confirm_button.forget()
-        results_label.forget()
-    else:
-        # Mostrar boton de confirmación
-        confirm_button.pack(before=table_frame)
+# ---------------------------- Funciones ----------------------------
+def open_poster(url):
+    webbrowser.open(url)
 
 def confirm_selection():
-    selected_movies = [] # Lista creada para evitar duplicados
-
-    global movies
-
-    # Limpiar tabla de resultados cada vez que se refresque
     for row in tree.get_children():
         tree.delete(row)
     
-    # Obtener selección de géneros
-    selection_indexes = list_genres_listbox.curselection()
-    selected_genres = [list_genres_listbox.get(i) for i in selection_indexes]
+    selection = list_genres_listbox.curselection()
+    if not selection:
+        return
     
-    # Se llama a la función get_qualified_movies_by_rate del modulo DataBase para almacenar una lista de las peliculas filtradas en la variable global
+    selected_genres = [list_genres_listbox.get(i) for i in selection]
+    
     movies = DataBase.get_qualified_movies_by_rate(DataBase.filter_by_genres(selected_genres))
     
-    # Insertar peliculas en la tabla sin duplicar titulos
-    for movie in movies:
-        # Si la pelicula no se encuentra en la lista creada, entonces la agrega y es insertada en el arbol de la tabla
-        if not movie["title"] in selected_movies:
-            tree.insert("", tk.END, values=(movie["title"], movie["overview"], movie["vote_average"]))
-            selected_movies.append(movie["title"])
-    
-    # Si el usuario ya ha hecho scroll con anterioridad, al refrescar la tabla vuelve al inicio automaticamente
-    tree.yview_moveto(0)
+    for m in movies:
+        tree.insert("", "end", values=(m["id"], m["title"], m["vote_average"]))
 
-
-def show_overview(event = None):
-    # Obtener la fila seleccionada en la tabla
+def show_movie_details(event=None):
     selected = tree.selection()
-    if selected:
-        # Mostrar titulo y descripción en etiquetas
-        overview_title_label.config(text=tree.item(selected[0])["values"][0])
-        overview_label.config(text=tree.item(selected[0])["values"][1])
+    if not selected:
+        return
+    
+    item = tree.item(selected[0])
+    movie_id = item["values"][0]
+    
+    details = get_movie_details_by_id(movie_id)
+    
+    if "error" in details:
+        title_label_widget.config(text="Error al cargar detalles")
+        director_label.config(text="")
+        runtime_label.config(text="")
+        genres_label.config(text="")
+        rating_label.config(text="")
+        overview_label.config(text="")
+        poster_link.config(text="", cursor="")
+        return
+    
+    title_label_widget.config(text=details["title"])
+    director_label.config(text=f"🎥 Director: {details['director']}")
+    runtime_label.config(text=f"⏱️ Duración: {details['runtime']}")
+    genres_label.config(text=f"🎭 Géneros: {details['genres']}")
+    rating_label.config(text=f"⭐ Calificación: {details['vote_average']}/10")
+    overview_label.config(text=f"📝 Sinopsis:\n{details['overview']}")
+    
+    poster_link.config(text="🔍 Ver pósters en Google Images", fg="blue", cursor="hand2")
+    poster_link.bind("<Button-1>", lambda e: open_poster(details["poster_url"]))
 
-        # Obtener la lista de productoras de la película
-        production_company = DataBase.metadata.loc[DataBase.metadata["title"] == tree.item(selected[0])["values"][0], "production_companies"].values[0]
-        
-        # Convertir el string a lista de diccionarios
-        names_dict = ""
-        p_dict = ast.literal_eval(production_company)
+# ---------------------------- Widgets principales ----------------------------
+tk.Label(root, text="Sistema de Recomendación de Películas", font=("Arial", 18)).pack(pady=10)
 
-        # Concatenar nombres de productoras si en el archivo hay varias compañias productoras
-        for p_company in p_dict:
-            names_dict += p_company["name"] + ", "
-        names_dict = names_dict[0:-2]
-        
-        # Mostrar productoras en etiqueta
-        productor_label.config(text="Production companies: " + names_dict)
-        productor_label.pack(before=confirm_button)
+tk.Label(root, text="Selecciona uno o más géneros:").pack()
+list_genres_listbox = tk.Listbox(root, height=8, selectmode="multiple")
+for g in DataBase.get_all_genres():
+    list_genres_listbox.insert(tk.END, g)
+list_genres_listbox.pack(pady=5)
 
-# ---------------------------
-# Widgets
-# ---------------------------
+tk.Button(root, text="Filtrar Películas", command=confirm_selection).pack(pady=5)
 
-# Se crean todos los widgets de la aplicación
-overview_title_label = tk.Label(root, text="", wraplength=800, justify="center") # Etiqueta para título
-overview_label = tk.Label(root, text="", wraplength=800, justify="left") # Etiqueta para descripción
-title_label = tk.Label(root, text="Movies recomendation system.") # Título principal
-instruction_label = tk.Label(root, text="Choose the genres you would like to filter.") # Instrucciones
-productor_label = tk.Label(root) # Etiqueta para productoras
-results_label = tk.Label(root, text="") # Etiqueta para mostrar géneros elegidos
-list_genres_listbox = tk.Listbox(root, height=10, selectmode="multiple") # Listbox para géneros 
-confirm_button = tk.Button(root, text="Confirm selection", command=confirm_selection) # Botón de confirmación
-
-# ---------------------------
-# Llenar Listbox con géneros
-# ---------------------------
-
-genres = DataBase.get_all_genres()  # Lista de géneros
-for genre in genres:
-    list_genres_listbox.insert(tk.END, genre)
-
-# ---------------------------
-# Ubicación de widgets
-# ---------------------------
-
-#Se despliegan los widgets
-title_label.pack()
-instruction_label.pack()
-list_genres_listbox.pack()
-results_label.pack()
-overview_title_label.pack()
-overview_label.pack()
-tree = ttk.Treeview(table_frame, columns=("Title", "Overview", "Rating"), show="headings")
-tree.heading("Title", text="Title")
-tree.heading("Rating", text="Rating")
-tree.heading("Overview", text="Overview")
-
-
+columns = ("ID", "Título", "Calificación")
+tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=8)
+for col, width in zip(columns, [80, 300, 100]):
+    tree.heading(col, text=col)
+    tree.column(col, width=width)
 tree.pack(fill="both", expand=True)
+tree.bind("<<TreeviewSelect>>", show_movie_details)
+
 table_frame.pack(pady=10, fill="both", expand=True)
 
-#----------------------------
-# Eventos
-#----------------------------
+details_frame.pack(pady=10, fill="x")
+for widget in [title_label_widget, director_label, runtime_label, genres_label, rating_label, overview_label, poster_link]:
+    widget.pack(anchor="w", pady=2)
 
-list_genres_listbox.bind("<<ListboxSelect>>", show_selection)
-tree.bind("<<TreeviewSelect>>", show_overview)
-# ---------------------------
-# Configuración de la ventana
-# ---------------------------
-
+# ---------------------------- Función startup ----------------------------
 def startup():
-    create_window()
     root.mainloop()
