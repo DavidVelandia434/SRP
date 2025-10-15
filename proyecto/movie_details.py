@@ -1,7 +1,6 @@
 # DETALLES DE PELICULAS
 import ast
 import pandas as pd
-#librerias de prueba
 import sys
 from urllib.parse import quote
 # Importa la base de datosd ya fusionado por tu grupo
@@ -106,4 +105,5 @@ def _extract_details(row):
    # print(f"Géneros: {detalles['genres']}")
    # print(f"Calificación: {detalles['vote_average']}/10")
    # print(f"Póster: {detalles['poster_url']}")
+
    # print(f"\n Sinopsis:\n{detalles['overview']}")
