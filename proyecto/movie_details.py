@@ -1,14 +1,16 @@
 # DETALLES DE PELICULAS
 import ast
 import pandas as pd
+#libreria para funciones relacionadas con el interpete de python como salir del programa
 import sys
+#manipular y construir convirtiendo caracteres especiales de texto para Urls
 from urllib.parse import quote
 # Importa la base de datosd ya fusionado por tu grupo
 from DataBase import metadata  
 
 #///////////////////////////////////////////////////////////////
 
-#crear la url hacia google imagenes del poster de la pelicula
+#Crear la url hacia google imagenes del poster de la pelicula
 def get_google_poster_url(title: str) -> str:
     query = quote(f"{title} movie poster")
     return f"https://www.google.com/search?q={query}&tbm=isch"
@@ -107,3 +109,4 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
