@@ -17,10 +17,10 @@ def get_google_poster_url(title: str) -> str:
 
 #------------------------------------------------------------
 
-#buscar el id de la pelicula seleccionada en metadata
+#Buscar el id de la pelicula seleccionada en metadata
 def get_movie_details_by_id(movie_id: int) -> dict:
 
-    # Buscar la película por ID
+    # Buscar la película por ID en DataBase
     row = metadata[metadata['id'] == movie_id]
     if row.empty:
         return {"error": "Película no encontrada"}
@@ -30,7 +30,7 @@ def get_movie_details_by_id(movie_id: int) -> dict:
 
 #Titulo de la pelicula
 def get_movie_details_by_title(title: str) -> dict:
-   # Obtiene los detalles usando el título exacto (ignora mayúsculas/minúsculas y espacios mediante case y na de pandas).
+   #Obtiene los detalles usando el título exacto (ignora mayúsculas/minúsculas y espacios mediante case y na de pandas).
     match = metadata[metadata['title'].str.fullmatch(title, case=False, na=False)]
     if match.empty:
         return {"error": f"No se encontró la película: {title}"}
@@ -38,7 +38,7 @@ def get_movie_details_by_title(title: str) -> dict:
 
 #------------------------------------------------------------
 
-#extraer los datos y limpiar
+#Extraer los datos y limpiar
 def _extract_details(row):
     
     # Géneros
@@ -109,4 +109,5 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
