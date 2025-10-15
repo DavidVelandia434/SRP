@@ -33,6 +33,7 @@ def get_movie_details_by_id(movie_id: int) -> dict:
 def get_movie_details_by_title(title: str) -> dict:
    #Obtiene los detalles usando el título exacto (ignora mayúsculas/minúsculas y espacios mediante case y na de pandas).
     match = metadata[metadata['title'].str.fullmatch(title, case=False, na=False)]
+    #Empty por si se tiene ausencia de dato
     if match.empty:
         return {"error": f"No se encontró la película: {title}"}
     return _extract_details(match.iloc[0])
@@ -51,7 +52,8 @@ def _extract_details(row):
 
     # Director (sacado de credits)
     director = "Desconocido"
-    #se ubica en la casilla de crew en el dicciionario de job
+    #Se ubica en la casilla de crew en el dicciionario de job
+    #Identifica la columna crew no este vacia (notna)
     if 'crew' in row and pd.notna(row['crew']):
         try:
             crew_list = ast.literal_eval(row['crew'])
@@ -110,6 +112,7 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
 
 
