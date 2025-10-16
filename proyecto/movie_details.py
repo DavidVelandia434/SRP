@@ -74,7 +74,7 @@ def _extract_details(row):
         except:
             pass
 
-    #almacena la url generada para mostrarla
+    #Almacena la url generada para mostrarla
     poster_url = get_google_poster_url(row['title'])
 
     # Duración
@@ -82,6 +82,8 @@ def _extract_details(row):
     runtime = f"{int(row['runtime'])} minutos" if pd.notna(row['runtime']) and row['runtime'] > 0 else "Duración desconocida"
 
     # Sinopsis
+    #Identifica la columna overview no este vacia (notna)
+    #Strip evita caracteres no deseados como espacios
     overview = row['overview'] if pd.notna(row['overview']) and str(row['overview']).strip() else "Sinopsis no disponible."
 
     # Devolver diccionario limpio
@@ -116,6 +118,7 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
 
 
