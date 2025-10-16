@@ -99,7 +99,6 @@ def _extract_details(row):
         "vote_average": round(row['vote_average'], 1) if pd.notna(row['vote_average']) else "N/A",
         "vote_count": int(row['vote_count']) if pd.notna(row['vote_count']) else 0,
         "release_date": row['release_date'] if pd.notna(row['release_date']) else "Fecha desconocida",
-        #"imdb_id": row['imdb_id'] if pd.notna(row['imdb_id']) else None
     }
 
 #######################################################################################################
@@ -118,6 +117,7 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
 
 
