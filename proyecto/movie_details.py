@@ -111,7 +111,7 @@ def _extract_details(row):
    # print(f"Duración: {detalles['runtime']}")
    # print(f"Géneros: {detalles['genres']}")
    # print(f"Calificación: {detalles['vote_average']}/10")
-   # print(f"Póster: {detalles['poster_url']}")
+
 
 
 
