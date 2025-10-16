@@ -103,7 +103,6 @@ def _extract_details(row):
 
 #######################################################################################################
 # Prueba 
-#detalles = get_movie_details_by_id(862)
 
 #if "error" in detalles:
  #   print(detalles["error"])
@@ -117,6 +116,7 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
 
 
