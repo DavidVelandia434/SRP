@@ -27,6 +27,7 @@ def open_poster(url):
     webbrowser.open(url)
 
 def confirm_selection():
+    selected_movies = []
     for row in tree.get_children():
         tree.delete(row)
     
@@ -39,7 +40,11 @@ def confirm_selection():
     movies = DataBase.get_qualified_movies_by_rate(DataBase.filter_by_genres(selected_genres))
     
     for m in movies:
-        tree.insert("", "end", values=(m["id"], m["title"], m["vote_average"]))
+        if not m["title"] in selected_movies:
+            tree.insert("", "end", values=(m["id"], m["title"], m["vote_average"]))
+            selected_movies.append(m["title"])
+
+    tree.yview_moveto(0)
 
 def show_movie_details(event=None):
     selected = tree.selection()
