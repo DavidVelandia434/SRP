@@ -105,7 +105,8 @@ def _extract_details(row):
 # Prueba 
 
 if "error" in detalles:
-  print("\n === DETALLES DE LA PELÍCULA === ")
+  print("\n === DETALLES DE LA PELÍ
+
 
 
 
