@@ -110,7 +110,7 @@ def _extract_details(row):
    # print(f"Director: {detalles['director']}")
    # print(f"Duración: {detalles['runtime']}")
    # print(f"Géneros: {detalles['genres']}")
-   # print(f"Calificación: {detalles['vote_average']}/10")
+
 
 
 
