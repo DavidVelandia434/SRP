@@ -108,7 +108,8 @@ def _extract_details(row):
  #   print("\n === DETALLES DE LA PELÍCULA === ")
   #  print(f"Título: {detalles['title']}")
    # print(f"Director: {detalles['director']}")
-   # print(f"Duración: {detall
+   # print(f"Duración: 
+
 
 
 
