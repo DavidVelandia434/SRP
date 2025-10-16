@@ -105,8 +105,6 @@ def _extract_details(row):
 # Prueba 
 
 #if "error" in detalles:
- #   print(detalles["error"])
-#else:
  #   print("\n === DETALLES DE LA PELÍCULA === ")
   #  print(f"Título: {detalles['title']}")
    # print(f"Director: {detalles['director']}")
@@ -116,6 +114,7 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
 
 
