@@ -58,15 +58,18 @@ def _extract_details(row):
         try:
             crew_list = ast.literal_eval(row['crew'])
             directors = [p['name'] for p in crew_list if p.get('job') == 'Director']
+        #si la pelicula tiene más de un director, seleccionara el primero que se muestra
             director = directors[0] if directors else "Desconocido"
         except:
             pass
 
     # Palabras clave (keywords)
     keywords = "Sin palabras clave"
+    #Identifica la columna keywords no este vacia (notna)
     if 'keywords' in row and pd.notna(row['keywords']):
         try:
             kw_list = ast.literal_eval(row['keywords'])
+            #isinstance verifica si el dato en la posicion kw es diccionario o dato corrupto
             keywords = ", ".join([kw['name'] for kw in kw_list if isinstance(kw, dict)])
         except:
             pass
@@ -75,6 +78,7 @@ def _extract_details(row):
     poster_url = get_google_poster_url(row['title'])
 
     # Duración
+    #Identifica la columna runtime no este vacia (notna)
     runtime = f"{int(row['runtime'])} minutos" if pd.notna(row['runtime']) and row['runtime'] > 0 else "Duración desconocida"
 
     # Sinopsis
@@ -112,6 +116,7 @@ def _extract_details(row):
    # print(f"Póster: {detalles['poster_url']}")
 
    # print(f"\n Sinopsis:\n{detalles['overview']}")
+
 
 
 
