@@ -17,7 +17,7 @@ def load_and_merge_credits_keywords():
     credits['id'] = credits['id'].astype('int')
     metadata['id'] = metadata['id'].astype('int')
 
-    #juntamos los datos de los archivos.csv y keywords.csv con datos
+    #juntamos los datos de los credits.csv y keywords.csv con datos
     metadata = metadata.merge(credits, on='id')
     metadata = metadata.merge(keywords, on='id')
 
@@ -92,3 +92,4 @@ load_and_merge_credits_keywords()
 
 #for movie in q_movies:
 #   print(movie["vote_average"])
+
