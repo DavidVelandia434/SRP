@@ -107,7 +107,7 @@ def _extract_details(row):
 if "error" in detalles:
   print("\n === DETALLES DE LA PELÍCULA === ")
   print(f"Título: {detalles['title']}")
-   # print(f"Director: {de
+
 
 
 
