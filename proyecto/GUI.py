@@ -87,6 +87,14 @@ list_genres_listbox.pack(pady=5)
 
 tk.Button(root, text="Filtrar Películas", command=confirm_selection).pack(pady=5)
 
+#Estilo de columnas
+style = ttk.Style()
+style.theme_use("clam")  # Aplicar colores
+style.configure("Treeview.Heading",
+                background="#11134B",
+                foreground="white",
+                font=("Arial", 11, "bold"))
+
 columns = ("ID", "Título", "Calificación")
 tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=8)
 for col, width in zip(columns, [80, 300, 100]):
