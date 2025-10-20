@@ -14,13 +14,13 @@ table_frame = tk.Frame(root)
 details_frame = tk.Frame(root, bg="#f0f0f0", padx=10, pady=10)
 
 # Widgets detalles
-title_label_widget = tk.Label(details_frame, text="", font=("Arial", 16, "bold"), bg="#f0f0f0")
+title_label_widget = tk.Label(details_frame, text="", font=("Arial", 16, "bold"), bg="#6dbdff")
 director_label = tk.Label(details_frame, text="", bg="#f0f0f0")
 runtime_label = tk.Label(details_frame, text="", bg="#f0f0f0")
 genres_label = tk.Label(details_frame, text="", bg="#f0f0f0")
 rating_label = tk.Label(details_frame, text="", bg="#f0f0f0")
 overview_label = tk.Label(details_frame, text="", wraplength=500, justify="left", bg="#f0f0f0")
-poster_link = tk.Label(details_frame, text="", fg="blue", cursor="hand2", bg="#f0f0f0")
+poster_link = tk.Label(details_frame, text="", fg="blue", cursor="hand2", bg="#f0f0f0", font=("Arial", 10))
 
 # ---------------------------- Funciones ----------------------------
 def open_poster(url):
