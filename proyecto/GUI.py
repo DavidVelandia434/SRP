@@ -98,7 +98,10 @@ style.configure("Treeview.Heading",
 # Estilo para el Treeview
 style = ttk.Style()
 style.theme_use("clam")
-
+# Filas seleccionadas
+style.map("Treeview",
+          background=[("selected", "#E3F2FD")], #fondo
+          foreground=[("selected", "#1976D2")]) #letra
 
 columns = ("ID", "Título", "Calificación")
 tree = ttk.Treeview(table_frame, columns=columns, show="headings", height=8)
