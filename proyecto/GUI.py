@@ -73,7 +73,7 @@ def show_movie_details(event=None):
     rating_label.config(text=f"⭐ Calificación: {details['vote_average']}/10")
     overview_label.config(text=f"📝 Sinopsis:\n{details['overview']}")
     
-    poster_link.config(text="🔍 Ver pósters en Google Images", fg="blue", cursor="hand2")
+    poster_link.config(text="🎞️ Ver pósters en Google Images", fg="blue", cursor="hand2")
     poster_link.bind("<Button-1>", lambda e: open_poster(details["poster_url"]))
 
 # ---------------------------- Widgets principales ----------------------------
