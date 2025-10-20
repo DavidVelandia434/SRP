@@ -77,9 +77,9 @@ def show_movie_details(event=None):
     poster_link.bind("<Button-1>", lambda e: open_poster(details["poster_url"]))
 
 # ---------------------------- Widgets principales ----------------------------
-tk.Label(root, text="Sistema de Recomendación de Películas", font=("Arial", 18)).pack(pady=10)
+tk.Label(root, text="Sistema de Recomendación de Películas", font=("Arial", 18, "bold")).pack(pady=10)
 
-tk.Label(root, text="Selecciona uno o más géneros:").pack()
+tk.Label(root, text="Selecciona uno o más géneros:", font=("Arial", 15)).pack()
 list_genres_listbox = tk.Listbox(root, height=8, selectmode="multiple")
 for g in DataBase.get_all_genres():
     list_genres_listbox.insert(tk.END, g)
