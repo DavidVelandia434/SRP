@@ -176,7 +176,7 @@ def on_leave(e):
     filter_button.config(bg=BG_PANEL, fg=ACCENT)
 
 filter_button = tk.Button(
-    root, text="🎞️ Filter movies.", command=confirm_selection,
+    root, text="🎞️ Filter movies", command=confirm_selection,
     font=("Segoe UI", 12, "bold"),
     bg=BG_PANEL, fg=ACCENT,
     activebackground=ACCENT,
